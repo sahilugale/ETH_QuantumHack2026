@@ -1,0 +1,7 @@
+quandela_hack/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.env
+outputs/
+data/
