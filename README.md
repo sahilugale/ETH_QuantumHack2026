@@ -11,9 +11,9 @@ The challenge investigates whether Quantum Physics-Informed Neural Networks (QPI
 
 # Team
 
+- Chayma Faraji
+- Iva Sanwald
 - Sahil Ugale
-- Team Member 2
-- Team Member 3
 
 ---
 
