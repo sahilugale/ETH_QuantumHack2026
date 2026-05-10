@@ -74,7 +74,7 @@ def sample_boundary(n):
 
 
 class MLP_PINN(nn.Module):
-    def __init__(self, in_dim=2, hidden_dim=10, depth=3, out_dim=1, activation=nn.Tanh):
+    def __init__(self, in_dim=2, hidden_dim=10, depth=4, out_dim=1, activation=nn.Tanh):
         super().__init__()
         layers = [nn.Linear(in_dim, hidden_dim), activation()]
         for _ in range(depth - 1):
@@ -124,7 +124,7 @@ def pde_residual_direct(model, xt):
 
 
 class MLP_AuxPINN(nn.Module):
-    def __init__(self, in_dim=2, hidden_dim=10, depth=3, activation=nn.Tanh):
+    def __init__(self, in_dim=2, hidden_dim=10, depth=4, activation=nn.Tanh):
         super().__init__()
         layers = [nn.Linear(in_dim, hidden_dim), activation()]
         for _ in range(depth - 1):
@@ -168,7 +168,7 @@ def pde_residual_aux(model, xt):
     return residual, consistency
 
 class MLP_AuxPINN(nn.Module):
-    def __init__(self, in_dim=2, hidden_dim=10, depth=3, activation=nn.Tanh):
+    def __init__(self, in_dim=2, hidden_dim=10, depth=4, activation=nn.Tanh):
         super().__init__()
         layers = [nn.Linear(in_dim, hidden_dim), activation()]
         for _ in range(depth - 1):
@@ -234,9 +234,9 @@ USE_AUXILIARY_DERIVATIVE = True  # Set to False to train the direct PINN instead
 config = TrainConfig()
 
 if USE_AUXILIARY_DERIVATIVE:
-    model = MLP_AuxPINN(hidden_dim=10, depth=3).to(device=DEVICE, dtype=DTYPE)
+    model = MLP_AuxPINN(hidden_dim=10, depth=4).to(device=DEVICE, dtype=DTYPE)
 else:
-    model = MLP_PINN(hidden_dim=10, depth=3).to(device=DEVICE, dtype=DTYPE)
+    model = MLP_PINN(hidden_dim=10, depth=4).to(device=DEVICE, dtype=DTYPE)
 
 optimizer = torch.optim.Adam(model.parameters(), lr=config.lr)
 mse = nn.MSELoss()

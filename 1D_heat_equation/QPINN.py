@@ -72,7 +72,7 @@ def sample_boundary(n):
 # %%
 
 class MerlinHeatQPINN(nn.Module):
-    def __init__(self, feature_size=4, quantum_output_size=4, hidden=16):
+    def __init__(self, feature_size=14, quantum_output_size=14, hidden=11):
         super().__init__()
         self.feature_map = nn.Sequential(
             nn.Linear(2, hidden),
@@ -117,6 +117,21 @@ for p in model.parameters():
 print(model)
 print("first parameter dtype:", next(model.parameters()).dtype)
 
+
+# %%
+total_params = sum(p.numel() for p in model.parameters())
+
+quantum_params = sum(
+    p.numel() for p in model.quantum.parameters()
+)
+
+classical_params = total_params - quantum_params
+
+print("Total:", total_params)
+print("Quantum:", quantum_params)
+print("Classical:", classical_params)
+
+print("Quantum Parameter Ratio:", quantum_params / total_params)
 
 # %%
 
@@ -286,8 +301,6 @@ print("L-infinity error:", float(l_infinity))
 
 nmse = torch.sum((U_true - U_pred)**2) / torch.sum(U_true**2)
 print("NMSE:", float(nmse))
-
-# %%
 
 num_layers = len(list(model.modules()))
 print(f"Total internal modules/layers: {num_layers}")
