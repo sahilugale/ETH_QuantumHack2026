@@ -58,7 +58,9 @@ Navigate to the respective directories and execute the python files. Each script
 `python submission/ratio_tests/QPINN_classical_params_const_ratio.py`
 
 # Example: Run the frozen quantum ablation test
+
 `python submission/ratio_tests/QPINN_freeze_total_params_const_ratio_test.py`
+
 ---
 
 # Objectives & Implemented Methodology
