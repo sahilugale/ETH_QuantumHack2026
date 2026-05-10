@@ -41,11 +41,12 @@ If you wish to re-run the experiments, generate new data, or test different seed
 It is recommended to use a virtual environment. Install the necessary packages using the provided requirements.txt.
 
 # Create and activate a virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+`python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate`
 
 # Install dependencies
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 (Ensure that merlinquantum and torch are correctly installed for your hardware setup).
 
 2. Running the Experiments
@@ -53,10 +54,10 @@ Navigate to the respective directories and execute the python files. Each script
 
 
 # Example: Run the classical parameter constant ratio test
-python submission/ratio_tests/QPINN_classical_params_const_ratio.py
+`python submission/ratio_tests/QPINN_classical_params_const_ratio.py`
 
 # Example: Run the frozen quantum ablation test
-python submission/ratio_tests/QPINN_freeze_total_params_const_ratio_test.py
+`python submission/ratio_tests/QPINN_freeze_total_params_const_ratio_test.py`
 ---
 
 # Objectives & Implemented Methodology
